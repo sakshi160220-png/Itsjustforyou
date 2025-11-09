@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Flirty Proposal for You</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #ffe6f2, #ffb3ba);
+            color: #333;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+        h1 {
+            color: #e91e63;
+            font-size: 2.5em;
+        }
+        .heart {
+            font-size: 50px;
+            color: red;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .question {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+        button {
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #c2185b;
+        }
+        .scale-btn {
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+        #response {
+            margin-top: 20px;
+            font-size: 20px;
+            display: none;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hey Mehar, Let's have a quickfire...</h1>
+    <div class="heart">❤️</div>
+    
+    <div id="question1" class="question">
+        <p>Question 1: Who flirts better?</p>
+        <button onclick="nextQuestion(1)">Me</button>
+        <button onclick="nextQuestion(1)">You</button>
+        <button onclick="nextQuestion(1)">Both equally dangerous</button>
+    </div>
+    
+    <div id="question2" class="question hidden">
+        <p>Question 2: If I were to surprise you with a gift, what would it be?</p>
+        <button onclick="nextQuestion(2)">Flowers and chocolates</button>
+        <button onclick="nextQuestion(2)">A handwritten note</button>
+        <button onclick="nextQuestion(2)">Something personalized</button>
+    </div>
+    
+    <div id="question3" class="question hidden">
+        <p>Question 3: What's the most flirty thing someone could say to you?</p>
+        <button onclick="nextQuestion(3)">You light up my world</button>
+        <button onclick="nextQuestion(3)">You're irresistible</button>
+        <button onclick="nextQuestion(3)">I can't stop thinking about you</button>
+    </div>
+    
+    <div id="question4" class="question hidden">
+        <p>Question 4: What do you feel when you see my name pop up on your phone?</p>
+        <button onclick="nextQuestion(4)">Butterflies</button>
+        <button onclick="nextQuestion(4)">A big smile</button>
+        <button onclick="nextQuestion(4)">Damn its him</button>
+    </div>
+    
+    <div id="question5" class="question hidden">
+        <p>Question 5: What will you say when I finally confess?</p>
+        <button onclick="nextQuestion(5)">Took you long enough!</button>
+        <button onclick="nextQuestion(5)">Awww really?</button>
+        <button onclick="nextQuestion(5)">Finally...yess,forever!</button>
+    </div>
+
+    <div id="question6" class="question hidden">
+        <p>Question 6: What nickname suits us best?</p>
+        <button onclick="nextQuestion(6)">Cutie duo</button>
+        <button onclick="nextQuestion(6)">Lovebirds</button>
+        <button onclick="nextQuestion(6)">Made for eachother</button>
+    </div>
+
+    <div id="question7" class="question hidden">
+        <p>Question 7: What's my role in your life?</p>
+        <button onclick="nextQuestion(7)">My favorite person</button>
+        <button onclick="nextQuestion(7)">My peace & chaos both</button>
+        <button onclick="nextQuestion(7)">my cant explain but cant replace one</button>
+    </div>
+
+    <div id="question8" class="question hidden">
+        <p>Question 8: What will you say when I finally confess?</p>
+        <button onclick="nextQuestion(8)">Yessss</button>
+        <button onclick="nextQuestion(8)">Obviously yesss</button>
+        <button onclick="nextQuestion(8)">i have been yours already</button>
+    </div>
+    
+    <div id="scale" class="question hidden">
+        <p>On a scale of 1-10, how cute do you think I am?</p>
+        <button class="scale-btn" onclick="nextToProposal(1)">1</button>
+        <button class="scale-btn" onclick="nextToProposal(2)">2</button>
+        <button class="scale-btn" onclick="nextToProposal(3)">3</button>
+        <button class="scale-btn" onclick="nextToProposal(4)">4</button>
+        <button class="scale-btn" onclick="nextToProposal(5)">5</button>
+        <button class="scale-btn" onclick="nextToProposal(6)">6</button>
+        <button class="scale-btn" onclick="nextToProposal(7)">7</button>
+        <button class="scale-btn" onclick="nextToProposal(8)">8</button>
+        <button class="scale-btn" onclick="nextToProposal(9)">9</button>
+        <button class="scale-btn" onclick="nextToProposal(10)">10</button>
+    </div>
+    
+    <div id="proposal" class="hidden">
+        <p>Wow, you're full of great answers! 😘</p>
+        <p>Will you be my girlfriend?</p>
+        <button onclick="showResponse()">Yes!</button>
+    </div>
+    
+    <div id="finalResponse" class="hidden">
+        <h1>Yay! 🎉</h1>
+        <p class="heart">❤️</p>
+        <p class="question">You've said yes to everything! Now I promise to make you smile every day. 💕</p>
+        <p>Its a big W, let's celebrate! well, you already clicked yes 9 times in a row! You just made me the happiest person alive! This is just the beginning of our beautiful journey together forever & always 😉</p>
+    </div>
+    
+    <script>
+        function nextQuestion(current) {
+            document.getElementById('question' + current).classList.add('hidden');
+            if (current < 8) {
+                document.getElementById('question' + (current + 1)).classList.remove('hidden');
+            } else {
+                document.getElementById('scale').classList.remove('hidden');
+            }
+        }
+        
+        function nextToProposal(rating) {
+            document.getElementById('scale').classList.add('hidden');
+            document.getElementById('proposal').classList.remove('hidden');
+        }
+        
+        function showResponse() {
+            document.getElementById('proposal').classList.add('hidden');
+            document.getElementById('finalResponse').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
